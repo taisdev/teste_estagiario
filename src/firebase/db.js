@@ -1,5 +1,5 @@
 import firebase from 'firebase/app';
-import "firebase/auth";
+
 const firebaseConfig = {
     apiKey: "AIzaSyDwf6xAe2-h5hDTHT0kXnn48AJ_V6fcZPY",
     authDomain: "projeto-estagio-40f6a.firebaseapp.com",
@@ -10,7 +10,6 @@ const firebaseConfig = {
     measurementId: "G-048BFJ24EJ"
 };
 
-const app = firebase.initializeApp(firebaseConfig);
-const auth = firebase.auth();
+const fire = firebase.initializeApp(firebaseConfig);
 
-export {firebase, auth, app};
+export default fire;
