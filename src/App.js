@@ -1,23 +1,16 @@
-import logo from './logo.svg';
 import './App.css';
-
+import { firebase, auth } from './firebase/db'
 function App() {
+  const handleClickButtonLogin = async () => {
+    const provider = new firebase.auth.GoogleAuthProvider();
+  const result = await auth.signInWithPopup(provider);
+  };
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <main>
+        <button onClick={handleClickButtonLogin}>Login</button>
+      </main>
     </div>
   );
 }
