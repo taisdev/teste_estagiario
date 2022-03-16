@@ -7,12 +7,14 @@ import React from 'react';
 import {useState, useEffect} from 'react';
 function App() {
   const [user, setUser] = useState('');
+  const [dados, setDados] = useState([]);
   const [usuario, setUsuario] = useState('');
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
   const [tipoUser, setTipoUser] = useState('');
   const [erroEmail, setErroEmail] = useState('');
   const [erroSenha, setErroSenha] = useState('');
+  const [possuiConta, setPossuiConta] = useState(false);
   
 
   const limparCampos = () => {
@@ -24,9 +26,42 @@ function App() {
     setErroEmail('');
     setErroSenha('');
   }
+  
+  const perfilUsuario = (perfil) => {
+   
+    if(perfil === "medico"){
+      return <Home 
+              nome = {dados.usuario}
+              tipoUsuario = {dados.tipo}
+              handleLogout = {handleLogout}/>
+    }
+    if(perfil === "gerente"){
+      return <Home 
+              nome = {dados.usuario}
+              tipoUsuario = {dados.tipo}
+              handleLogout = {handleLogout}/>
+    }
+    if(perfil === "secretaria"){
+      return <Home 
+              nome = {dados.usuario}
+              tipoUsuario = {dados.tipo}
+              handleLogout = {handleLogout}/>
+    }
+
+  }
+  const getUser = (uid) => {
+    const docRef = fire.firestore().collection('users').doc(uid);
+    docRef.get().then((doc) =>{
+      setDados(doc.data());
+    })
+  }
   const handleLogin = () => {
     limparErros();
-    fire.auth().signInWithEmailAndPassword(email, senha)
+    fire.auth().signInWithEmailAndPassword(email, senha).then
+    (async (data) => {
+      const uid = data.user.uid;
+      getUser(uid);
+    })
     .catch(err => {
       switch (err.code) {
         case "auth/invalid-email":
@@ -53,6 +88,8 @@ function App() {
           email: email,
           tipo: tipoUser
       });
+          const uid = data.user.uid;
+          getUser(uid);
           alert("conta criada com sucesso");
     }).catch(err => {
       switch (err.code) {
@@ -90,27 +127,35 @@ function App() {
     authListener();
   }, []);
 
-
+ 
   return (
     <div className="App">
       {user ? (
-      <Home handleLogout={handleLogout} />
+          <Home 
+          nome = {dados.usuario}
+          tipoUsuario = {dados.tipo}
+          handleLogout = {handleLogout}/> 
       ) : (
-     /* <Login
-      email={email} setEmail={setEmail}
-      senha={senha} setSenha={setSenha}
-      erroEmail={erroEmail}
-      erroSenha={erroSenha}
-      handleLogin={handleLogin} />
-*/
-      <Signin
-      usuario={usuario} setUsuario={setUsuario}
-      email={email} setEmail={setEmail}
-      senha={senha} setSenha={setSenha}
-      tipoUser={tipoUser} setTipoUser={setTipoUser}
-      erroEmail={erroEmail}
-      erroSenha={erroSenha}
-      handleCadastroUsuario={handleCadastroUsuario} />
+        !possuiConta ? (<Login
+          email={email} setEmail={setEmail}
+          senha={senha} setSenha={setSenha}
+          possuiConta={possuiConta} setPossuiConta={setPossuiConta} 
+          erroEmail={erroEmail}
+          erroSenha={erroSenha}
+          handleLogin={handleLogin}
+          limparCampos={limparCampos}
+          />) : (
+            <Signin
+            usuario={usuario} setUsuario={setUsuario}
+            email={email} setEmail={setEmail}
+            senha={senha} setSenha={setSenha}
+            tipoUser={tipoUser} setTipoUser={setTipoUser}
+            possuiConta={possuiConta} setPossuiConta={setPossuiConta} 
+            erroEmail={erroEmail}
+            erroSenha={erroSenha}
+            handleCadastroUsuario={handleCadastroUsuario}
+            limparCampos={limparCampos} />
+          )
       )}
       
       

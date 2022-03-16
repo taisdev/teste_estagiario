@@ -8,7 +8,10 @@ const Login = (props) => {
         setSenha,
         erroEmail,
         erroSenha,
-        handleLogin
+        limparCampos,
+        handleLogin,
+        possuiConta,
+        setPossuiConta
     } = props;
     return (
         <section className="login">
@@ -21,6 +24,7 @@ const Login = (props) => {
                 <p className="errorMsg">{erroSenha}</p>
                 <div className="btnContainer">
                     <button onClick={handleLogin}>Entrar</button>
+                    <p>Ainda não tem conta? <span onClick={limparCampos}><span onClick={() => setPossuiConta(!possuiConta)}>Fazer login</span></span></p>
                 </div>
 
             </div>

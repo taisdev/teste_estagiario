@@ -91,7 +91,7 @@
     font-size: 16px;
   }
   
-  .hero {
+  .home {
     width: 100%;
     min-height: 100vh;
     background: radial-gradient(
@@ -102,8 +102,26 @@
     );
   }
   
-  .hero nav {
-    background: #603bbb;
+  .home nav.medico{
+    background: #00BFFF;
+    width: 100%;
+    padding: 20px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .home nav.gerente{
+    background: #98FB98;
+    width: 100%;
+    padding: 20px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .home nav.secretaria{
+    background: #EE82EE;
     width: 100%;
     padding: 20px 40px;
     display: flex;
@@ -111,11 +129,11 @@
     justify-content: space-between;
   }
   
-  .hero nav h2 {
+  .home nav h2 {
     color: #fff;
   }
   
-  .hero nav button {
+  .home nav button {
     width: 86px;
     padding: 8px 0;
     background: #3a2b58;

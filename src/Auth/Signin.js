@@ -12,8 +12,12 @@ const Signin = (props) => {
         setTipoUser,
         erroEmail,
         erroSenha,
+        possuiConta,
+        setPossuiConta,
+        limparCampos,
         handleCadastroUsuario
     } = props;
+
     return (
         <section className="login">
             <div className="loginContainer">
@@ -25,15 +29,17 @@ const Signin = (props) => {
                 <label>Senha</label>
                 <input type="text" required value={senha} onChange={e => setSenha(e.target.value)} />
                 <p className="errorMsg">{erroSenha}</p>
+            
                 <label>Tipo de usuário</label>
                 <select value={tipoUser} onChange={e => setTipoUser(e.target.value)}>
                     <option select>Selecione</option>
-                    <option value="1">Médico</option>
-                    <option value="2">Gerente</option>
-                    <option value="3">Secretária</option>
+                    <option value="medico">Médico</option>
+                    <option value="gerente">Gerente</option>
+                    <option value="secretaria">Secretária</option>
                 </select>
                 <div className="btnContainer">
                     <button onClick={handleCadastroUsuario}>Cadastrar</button>
+                    <p>Já tenho conta <span onClick={limparCampos}><span onClick={() => setPossuiConta(!possuiConta)}>Fazer login</span></span></p>
                 </div>
 
             </div>

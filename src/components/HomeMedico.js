@@ -1,10 +1,15 @@
 import React from 'react';
 
-const Home = ({ handleLogout }) => {
+const Home = (props) => {
+    const{
+        handleLogout,
+        nome,
+        tipoUsuario
+    } = props;
     return(
-        <section>
-            <nav>
-                <h2>Bem vindo</h2>
+        <section className="home">
+            <nav className={tipoUsuario}>
+                <h2>Bem vindo {nome} </h2>
                 <button onClick={handleLogout}>Logout</button>
             </nav>
         </section>
