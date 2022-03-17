@@ -1,7 +1,9 @@
 import './App.css';
 import fire from './firebase/db';
 import Login from './Auth/Login';
-import Home from './components/HomeMedico';
+import HomeMedico from './components/HomeMedico';
+import HomeSecretaria from './components/HomeSecretaria';
+import HomeGerente from './components/HomeGerente';
 import Signin from './Auth/Signin';
 import React from 'react';
 import {useState, useEffect} from 'react';
@@ -30,21 +32,18 @@ function App() {
   const perfilUsuario = (perfil) => {
    
     if(perfil === "medico"){
-      return <Home 
+      return <HomeMedico 
               nome = {dados.usuario}
-              tipoUsuario = {dados.tipo}
               handleLogout = {handleLogout}/>
     }
     if(perfil === "gerente"){
-      return <Home 
+      return <HomeGerente 
               nome = {dados.usuario}
-              tipoUsuario = {dados.tipo}
               handleLogout = {handleLogout}/>
     }
     if(perfil === "secretaria"){
-      return <Home 
+      return <HomeSecretaria 
               nome = {dados.usuario}
-              tipoUsuario = {dados.tipo}
               handleLogout = {handleLogout}/>
     }
 
@@ -77,7 +76,18 @@ function App() {
      
     })
   }
-
+ const resetSenha = () => {
+  fire.auth().sendPasswordResetEmail(email)
+  .then(() => {
+   alert("E-mail de redefinição de senha enviado, por favor verifique seu e-mail")
+  })
+  .catch((error) => {
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    console.error(errorMessage);
+    console.error(errorCode);
+  });
+ }
   const handleCadastroUsuario = () => {
     limparErros();
     fire.auth().createUserWithEmailAndPassword(email, senha)
@@ -96,8 +106,11 @@ function App() {
         case "auth/invalid-email":
           setErroEmail("Email inválido");
         break;
-        case "auth/user-not-found":
-          setErroEmail("Usuário não encontrado");
+        case "auth/email-already-exists":
+          setErroEmail("E-mail já cadastrado");
+        break;
+        case "auth/invalid-password":
+          setErroSenha("Senha precisa ter no mínimo 6 caracteres");
         break;
         case "auth/weak-password":
           setErroSenha("Senha muito fraca");
@@ -110,6 +123,8 @@ function App() {
 
   const handleLogout = () => {
     fire.auth().signOut();
+    setPossuiConta(false);
+    limparCampos();
   };
 
   const authListener = () => {
@@ -131,7 +146,7 @@ function App() {
   return (
     <div className="App">
       {user ? (
-          <Home 
+          <HomeGerente 
           nome = {dados.usuario}
           tipoUsuario = {dados.tipo}
           handleLogout = {handleLogout}/> 
@@ -144,6 +159,7 @@ function App() {
           erroSenha={erroSenha}
           handleLogin={handleLogin}
           limparCampos={limparCampos}
+          resetSenha={resetSenha}
           />) : (
             <Signin
             usuario={usuario} setUsuario={setUsuario}

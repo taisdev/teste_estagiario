@@ -1,0 +1,94 @@
+
+.login {
+  width: 100%;
+  min-height: 100vh;
+  padding: 0;
+  background:url(../img/bg.jpg) center;
+  display: flex;
+}
+.container{
+	width: 400px;
+	height: 400px;
+	background-color: rgba(255,255,255,0.3);
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+	-webkit-border-radius:10px;
+	-moz-border-radius:10px;
+	border-radius: 10px;
+	margin: 0 auto;
+	margin-top: 120px;
+	text-align: center;
+}
+.container img{
+	width: 120px;
+	height: 120px;
+	margin-top: -60px;
+	margin-bottom: 30px;
+}
+input, select, option{
+  color:#696969;
+	height: 40px;
+	width: 80%;
+	font-size: 18px;
+	margin-bottom: 10px;
+	background-color: rgba(255,255,255,0.5);
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  border-radius: 4px;
+	padding-left: 40px;
+	border: none;
+	background-repeat: no-repeat;
+	background-position: 10px;
+}
+
+input:focus, select:focus{
+  outline: none;
+  background-color:#fff;
+  }
+
+  .login .container .btnContainer {
+    width: 100%;
+    margin: auto;
+    padding: 10px 0;
+  }
+  
+  .login .container .btnContainer p {
+    margin: 14px 0 0 0;
+    text-align: right;
+    color:#696969;
+  }
+  
+  .login .container .btnContainer p span {
+    color: #696969;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin-right: 25px;
+    cursor: pointer;
+    transition: all 400ms ease-in-out;
+  }
+  
+  .login .container .btnContainer p span:hover {
+    color: #2D3F4E;
+    font-weight: 600;
+  }
+  .input:hover {
+    background-color: rgba(255, 255, 255, 0.45);
+    box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.05);
+  }
+  .login .loginContainer .errorMsg {
+    color: red;
+    font-size: 16px;
+  }
+  
+  button {
+    border: none;
+    border-radius: 4px;
+    outline: none;
+    text-transform: uppercase;
+    width: 80%;
+    padding: 15px 0;
+    color: #fff;
+    font-size: 14px;
+    letter-spacing: 1px;
+    background-image: linear-gradient(to right top, #2d3f4e, #3f4855, #4f535c, #5d5d62, #696969);
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+    cursor: pointer;
+  }

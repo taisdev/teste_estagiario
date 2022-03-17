@@ -1,5 +1,6 @@
 import React from 'react';
-
+import logologin from './../img/logologin.png';
+import './Auth.css';
 const Login = (props) => {
     const {
         email,
@@ -11,20 +12,22 @@ const Login = (props) => {
         limparCampos,
         handleLogin,
         possuiConta,
-        setPossuiConta
+        setPossuiConta,
+        resetSenha
     } = props;
     return (
         <section className="login">
-            <div className="loginContainer">
-                <label>E-mail</label>
-                <input type="text" autofocus required value={email} onChange={e => setEmail(e.target.value)} />
+            <div className="container">
+                <img src={logologin}/>
+                <input placeholder="E-mail" type="text" autofocus required value={email} onChange={e => setEmail(e.target.value)} />
                 <p className="errorMsg">{erroEmail}</p>
-                <label>Senha</label>
-                <input type="text" required value={senha} onChange={e => setSenha(e.target.value)} />
+                <input placeholder="Senha" type="password" required value={senha} onChange={e => setSenha(e.target.value)} />
                 <p className="errorMsg">{erroSenha}</p>
                 <div className="btnContainer">
                     <button onClick={handleLogin}>Entrar</button>
-                    <p>Ainda não tem conta? <span onClick={limparCampos}><span onClick={() => setPossuiConta(!possuiConta)}>Fazer login</span></span></p>
+                    <p> Ainda não tem conta? <span onClick={limparCampos}><span onClick={() => setPossuiConta(!possuiConta)}>Cadastre-se</span></span></p>
+                    <p><span onClick={resetSenha}>Esqueceu a senha?</span></p>
+                   
                 </div>
 
             </div>

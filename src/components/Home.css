@@ -1,0 +1,104 @@
+body {
+    font-size: .875rem;
+  }
+  .home {
+    width: 100%;
+    min-height: 100vh;
+    background: url(../img/H.png) no-repeat center center;
+  }
+   
+  .home nav.medico{
+    background: #00BFFF!important;
+  }
+
+  .home nav.gerente{
+    background: #98FB98!important;
+  }
+
+  .home nav.secretaria{
+    background: #EE82EE!important;
+  }
+  
+  .home nav button {
+    margin-right: 10px;
+    width: 86px;
+    padding: 8px 0;
+    border: none;
+    border-radius: 4px;
+    outline: none;
+    text-transform: uppercase;
+    color: #fff;
+    font-size: 14px;
+    letter-spacing: 1px;
+    background-image: linear-gradient(to right top, #2d3f4e, #3f4855, #4f535c, #5d5d62, #696969);
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+    cursor: pointer;
+  }
+
+  .feather {
+    width: 16px;
+    height: 16px;
+    vertical-align: text-bottom;
+  }
+
+  .sidebar {
+    margin-top:20px;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+    padding: 48px 0 0;
+    box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+  }
+  
+  .sidebar-sticky {
+    position: relative;
+    top: 0;
+    height: calc(100vh - 48px);
+    padding-top: .5rem;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+  
+ 
+  .sidebar .nav-link {
+    font-weight: 500;
+    font-weight: bold;
+    font-size:1.2em;
+    color: #2D3F4E;
+  }
+
+  .sidebar .nav-link:hover{
+    color: #fff;
+    background-color: #2D3F4E;
+  }
+  
+  .sidebar .nav-link .feather {
+    margin-right: 4px;
+    color: #999;
+  }
+  .sidebar .nav-link{
+    padding: 20px;
+  }
+ a i{
+    margin:5px;
+  }
+    
+  .sidebar .nav-link:hover .feather,
+  .sidebar .nav-link.active .feather {
+    color: inherit;
+  }
+  
+  .sidebar-heading {
+    font-size: .75rem;
+    text-transform: uppercase;
+  }
+  
+  .navbar-brand {
+    padding-top: .75rem;
+    padding-bottom: .75rem;
+    font-size: 1.8rem;
+    background-color: rgba(0, 0, 0, .25);
+    box-shadow: inset -1px 0 0 rgba(0, 0, 0, .25);
+  }

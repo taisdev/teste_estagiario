@@ -1,4 +1,6 @@
 import React from 'react';
+import logologin from './../img/logologin.png';
+import './Auth.css';
 
 const Signin = (props) => {
     const {
@@ -20,19 +22,15 @@ const Signin = (props) => {
 
     return (
         <section className="login">
-            <div className="loginContainer">
-                <label>Nome</label>
-                <input type="text" autofocus required value={usuario} onChange={e => setUsuario(e.target.value)} />
-                <label>E-mail</label>
-                <input type="text" required value={email} onChange={e => setEmail(e.target.value)} />
+            <div className="container">
+            <img src={logologin}/>
+                <input placeholder="Nome" type="text" autofocus required value={usuario} onChange={e => setUsuario(e.target.value)} />
+                <input placeholder="E-mail" type="text" required value={email} onChange={e => setEmail(e.target.value)} />
                 <p className="errorMsg">{erroEmail}</p>
-                <label>Senha</label>
-                <input type="text" required value={senha} onChange={e => setSenha(e.target.value)} />
+                <input placeholder="Senha" type="password" required value={senha} onChange={e => setSenha(e.target.value)} />
                 <p className="errorMsg">{erroSenha}</p>
-            
-                <label>Tipo de usuário</label>
-                <select value={tipoUser} onChange={e => setTipoUser(e.target.value)}>
-                    <option select>Selecione</option>
+                <select placeholder="Tipo de usuário" value={tipoUser} onChange={e => setTipoUser(e.target.value)}>
+                    <option >Selecione</option>
                     <option value="medico">Médico</option>
                     <option value="gerente">Gerente</option>
                     <option value="secretaria">Secretária</option>
