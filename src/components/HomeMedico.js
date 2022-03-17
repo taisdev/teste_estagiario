@@ -12,7 +12,7 @@ const HomeMedico = (props) => {
             <nav className="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
             <a className="navbar-brand col-sm-3 col-md-2 mr-0" href="#">
                 <img src={medico} width="50" height="50" className="d-inline-block align-top" alt=""/>
-                 teste
+                 {nome}
             </a>
             
                 <button className="" onClick={handleLogout}>Sair</button>

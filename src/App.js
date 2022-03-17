@@ -146,10 +146,7 @@ function App() {
   return (
     <div className="App">
       {user ? (
-          <HomeGerente 
-          nome = {dados.usuario}
-          tipoUsuario = {dados.tipo}
-          handleLogout = {handleLogout}/> 
+          perfilUsuario(dados.tipo) 
       ) : (
         !possuiConta ? (<Login
           email={email} setEmail={setEmail}
